@@ -13,9 +13,20 @@
       />
     </section>
     <h2 class="text-2xl font-medium">Your Events</h2>
+    <section class="flex flex-col gap-8">
+      <BookedEvent v-for="(i, index) in 3" :key="index">
+        <template #description> {{ 'Lorem Ipsum 2024' }} </template>
+
+        <template #button>
+          <BaseButton variant="danger">Cancel</BaseButton>
+        </template>
+      </BookedEvent>
+    </section>
   </main>
 </template>
 
 <script setup>
 import EventCard from '@/components/EventCard.vue'
+import BookedEvent from './components/BookedEvent.vue'
+import BaseButton from './components/BaseButton.vue'
 </script>
