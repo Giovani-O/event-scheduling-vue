@@ -1,15 +1,17 @@
 <template>
-  <article class="bg-zinc-900 border border-zinc-800 rounded-md p-4">
-    <div class="w-full flex justify-between">
-      <div name="description-slot">
+  <RoundedCard>
+    <div class="w-full flex justify-between items-center p-4">
+      <div v-if="$slots.description" name="description-slot">
         <slot name="description"></slot>
       </div>
 
-      <div name="button-slot">
+      <div v-if="$slots.button" name="button-slot">
         <slot name="button"></slot>
       </div>
     </div>
-  </article>
+  </RoundedCard>
 </template>
 
-<script setup></script>
+<script setup>
+import RoundedCard from './RoundedCard.vue'
+</script>

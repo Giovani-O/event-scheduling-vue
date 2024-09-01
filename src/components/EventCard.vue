@@ -1,23 +1,27 @@
 <template>
-  <div class="border border-zinc-800 bg-zinc-900 rounded-md">
-    <h3 class="p-4 font-medium text-xl border-b border-zinc-800">{{ title }}</h3>
-    <p class="p-4 border-b border-zinc-800">{{ when }}</p>
-    <p class="p-4">{{ description }}</p>
+  <RoundedCard>
+    <header
+      v-if="$slots.title"
+      name="title-slot"
+      class="p-4 font-medium text-xl border-b border-zinc-800"
+    >
+      <slot name="title"></slot>
+    </header>
 
-    <section class="flex justify-end p-4">
-      <BaseButton @click="$emit('register')"><pre>Register</pre></BaseButton>
-    </section>
-  </div>
+    <aside v-if="$slots.when" name="when-slot" class="p-4 border-b border-zinc-800">
+      <slot name="when"></slot>
+    </aside>
+
+    <aside v-if="$slots.description" name="description-slot" class="p-4">
+      <slot name="description"></slot>
+    </aside>
+
+    <footer v-if="$slots.button" name="button-slot" class="flex justify-end p-4">
+      <slot name="button"></slot>
+    </footer>
+  </RoundedCard>
 </template>
 
 <script setup>
-import BaseButton from './BaseButton.vue'
-
-defineProps({
-  title: String,
-  when: String,
-  description: String
-})
-
-defineEmits(['register'])
+import RoundedCard from './RoundedCard.vue'
 </script>
